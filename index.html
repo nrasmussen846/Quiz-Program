@@ -1,0 +1,130 @@
+<html>
+<head>
+  <title>Quiz Program</title>
+  <script>
+    var score = 0;
+    var questionCount = 1;
+    function gradeQuiz()
+    {
+      if(questionCount == 1)
+      {
+        if(document.getElementById("answer").value == 4) //ANSWER TO Q 1
+        {
+          score = score + 1;
+          questionCount = questionCount + 1;
+        }
+        else
+        {
+          questionCount = questionCount + 1;
+        }
+        document.getElementById("question").innerHTML = "What color is the sky?";
+      }
+      else if(questionCount == 2)
+      {
+        if(document.getElementById("answer").value == "Blue") //ANSWER TO Q 2
+        {
+          score = score + 1;
+          questionCount = questionCount + 1;
+        }
+        else
+        {
+          questionCount = questionCount + 1;
+        }
+        document.getElementById("question").innerHTML = "Where do students go to learn?";
+      }
+      else if(questionCount == 3)
+      {
+        if(document.getElementById("answer").value == "School") //ANSWER TO Q 3
+        {
+          score = score + 1;
+          end();
+        }
+        else
+        {
+          end();
+        }
+      }
+    }//function closing
+
+    function end()
+    {
+      document.getElementById("answer").style.visibility = "hidden";
+      document.getElementById("submit").style.visibility= "hidden";
+      document.getElementById("question").innerHTML = "COMPLETE";
+      if(score == 3)
+      {
+        document.getElementById("hidden").innerHTML = "Great Job! You got " + score + "/3.<br>Answers:<br>1. 4<br>2. Blue<br>3. School";
+      }
+      else
+      {
+        document.getElementById("hidden").innerHTML = "Try again, you got " + score + "/3.<br>Answers:<br>1. 4<br>2. Blue<br>3. School";
+      }
+
+    }
+  </script>
+
+  <style>
+  body{
+    background-color: #67eb9c;
+  }
+  h2{
+    font-size: 65px;
+    margin-bottom: 0px;
+    font-family: monospace;
+  }
+  h3{
+    font-size: 25px;
+    margin-top: 0px;
+    font-family: monospace;
+    margin-bottom: 0px;
+  }
+  #top{
+    background-color: #67e0eb;
+    width: 800px;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+  #bot{
+    background-color: #ebe967;
+    width: 700px;
+    padding-bottom: 10px;
+    border-radius: 25px;
+  }
+  hr{
+    width: 500px;
+    border: 5px solid #969696;
+
+  }
+  #question{
+    font-size: 40px;
+    font-family: monospace;
+  }
+  #submit{
+  background-color: #eb7d67;
+  font-family: monospace;
+  }
+  #hidden{
+    font-size: 25px;
+    font-family: sans-serif;
+  }
+  </style>
+</head>
+
+  <body>
+  <center>
+  <div id = "top">
+    <h2>General Knowledge</h2>
+    <h3>Can you answer them all?</h3>
+  </div>
+  <div id ="bot">
+    <span id = "question">How many wheels are on a car?</span>
+    <br>
+    <input type = "text" id = "answer">
+    <input type = "button" value = "Submit Answer" onclick = "gradeQuiz()" id = "submit">
+  </div>
+    <hr>
+    <span id = "hidden"></span>
+      </center>
+  </body>
+</html>
